@@ -1,0 +1,40 @@
+{
+  "name": "dsh-short-tool-ids",
+  "version": "0.2.0",
+  "description": "Scoped, reversible tool-call ID compatibility plugin for DeepSeek Harness",
+  "type": "module",
+  "main": "./index.mjs",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/mrbeandev/dsh-short-tool-ids.git"
+  },
+  "bugs": {
+    "url": "https://github.com/mrbeandev/dsh-short-tool-ids/issues"
+  },
+  "homepage": "https://github.com/mrbeandev/dsh-short-tool-ids#readme",
+  "exports": {
+    ".": "./index.mjs",
+    "./client": "./lib/client.js",
+    "./package.json": "./package.json"
+  },
+  "engines": { "node": ">=24.0.0" },
+  "license": "UNLICENSED",
+  "keywords": ["dsh", "deepseek-harness", "dsh-plugin", "tool-calling", "openai-compatible"],
+  "scripts": {
+    "build": "node scripts/build-client.mjs",
+    "test": "node --test test/*.test.mjs",
+    "test:integration": "node scripts/test-integration.mjs",
+    "prepack": "npm run build && npm test",
+    "pack:check": "npm pack --dry-run",
+    "prepublishOnly": "node scripts/check-release.mjs"
+  },
+  "files": ["index.mjs", "normalize.mjs", "client/index.mjs", "lib/client.js", "scripts/*.mjs", "test/*.test.mjs", "cordis.patch.yml", "README.md", "RELEASE.md", "CHANGELOG.md", "LICENSE"],
+  "publishConfig": { "access": "public" },
+  "dsh": {
+    "bundle": { "patch": "./cordis.patch.yml" },
+    "client": {
+      "platform": "web",
+      "inject": ["@deepseek-ai/dsh-client-ui-settings", "@deepseek-ai/dsh-client-ui-settings-models"]
+    }
+  }
+}
