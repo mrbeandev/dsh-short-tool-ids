@@ -34,8 +34,7 @@ workaround, not a general fix for Responses or Anthropic message IDs.
 
 ## Install from npm
 
-After the package has been published, install it into the Web profile with one
-command:
+Install it into the Web profile with one command:
 
 ```bash
 dsh plugin --profile web add dsh-short-tool-ids
@@ -54,13 +53,9 @@ Refresh the existing Web page. In **Settings → Models**, enable **Use short
 tool-call IDs** for the provider that returns the ID-length error. Retry that
 chat.
 
-The npm install is not available until this package has been published. The
-repository's release gate still requires the final distribution license; see
-[RELEASE.md](RELEASE.md). Until then, use the local install below.
-
 ## Install locally
 
-This package has not been published. From a terminal:
+To install from a local checkout instead, from a terminal:
 
 ```bash
 dsh plugin --profile web add "/absolute/path/to/dsh-short-tool-ids"
@@ -105,7 +100,7 @@ Or switch a provider's toggle off; subsequent dispatches stop rewriting its IDs.
   request not yet dispatched. Already-dispatched requests are unaffected.
 - Supports **pi-ai `openai-completions` models only**. Other protocols and native
   adapters are untouched even when that provider's switch is on.
-- Ordinary IDs longer than64 characters become `call_` plus48 SHA-256 hex
+- Ordinary IDs longer than 64 characters become `call_` plus 48 SHA-256 hex
   characters (53 total). Calls and matching results receive the same mapping.
 - Leaves valid IDs, arguments, outputs, replay metadata, tool execution identities
   and saved session files unchanged. Works on existing history and future requests.
@@ -172,14 +167,10 @@ lazy browser-bundle registration. Mock HTTP tests use a temporary loopback SSE
 endpoint and fake credentials, close it afterward, and make no paid API calls.
 UI tests use a fake React hook harness, not a full browser DOM test.
 
-v0.1.0's live repair was confirmed by the user with a successful reply. v0.2.0's
-new provider-card UI must still be checked in the existing GUI after installing,
-restarting and refreshing; tests alone do not establish that visual verification.
+v0.1.0's live repair was confirmed with a successful reply on a previously stalled
+session. The v0.2.0 provider-card UI was checked in a running DSH web session:
+toggle rendering, saving, and persistence across a page reload.
 
-## Publishing later
+## License
 
-See [RELEASE.md](RELEASE.md). The package has npm exports, a DSH host/client bundle,
-build/test scripts and an explicit packed-file allowlist. It has not been published.
-The repository URL is configured, but the distribution license is still
-intentionally unset (`UNLICENSED`); `prepublishOnly` blocks accidental
-publication until it is supplied.
+[MIT](LICENSE). Maintainer release steps are in [RELEASE.md](RELEASE.md).

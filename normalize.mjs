@@ -65,7 +65,7 @@ export function normalizeRequest(options) {
   return { ...options, messages };
 }
 
-const installationKey = Symbol.for('vehicle-monitor.dsh-short-tool-ids');
+const installationKey = Symbol.for('dsh-short-tool-ids.adapter-shim');
 
 /** Reversible adapter-boundary shim. Preserves prepared-call snapshot binding. */
 export function installAdapterShim(Adapter, { isEnabled = () => false } = {}) {
