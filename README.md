@@ -115,6 +115,16 @@ settings and during saves. Path-scoped writes retain other provider settings and
 use revision fencing. Save conflicts/failures show an error rather than a false
 success; different provider cards subscribe to the shared settings scope.
 
+## Optional dsh-rpm composite seat
+
+The provider-card extension cell is single-occupant per settings namespace, so
+this plugin's `llm-pi-ai` seat can also host one companion control: when
+[dsh-rpm](https://github.com/mrbeandev/dsh-rpm) is installed, a **Rate limit
+(requests per minute)** input renders beneath the toggle, reading and writing
+dsh-rpm's own `dsh-rpm` settings namespace. Nothing about the toggle's behavior,
+document, or defaults changes; without dsh-rpm the seat renders the toggle
+alone, exactly as before, and the RPM row never appears. Introduced in v0.3.0.
+
 ## Compatibility and risk
 
 **No guarantee of zero regressions.** This is a version-gated prototype wrapper,
